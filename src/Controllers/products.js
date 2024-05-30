@@ -75,7 +75,7 @@ function getListProducts(){
     try {
         // Verifica si el archivo existe antes de intentar leerlo
         if (!fs.existsSync(filePath)) {
-            throw new Error(`File not found: ${filePath}`);
+            console.log(`File not found: ${filePath}`);
         }
 
         // Lee el archivo y parsea su contenido
@@ -83,7 +83,6 @@ function getListProducts(){
         return data.products;
     } catch (error) {
         console.error('Error reading products.json:', error);
-        throw error;
     }
 
 

@@ -70,7 +70,7 @@ function getDetail(req, res){
 
 function getListProducts(){
     // Ajusta la ruta para apuntar a 'products.json' que está al mismo nivel que 'src'
-    //Esto es necesario para Vercel
+    //Esto es necesario para Vercel, en desarrollo no es necesario: '..', '..'
     const filePath = path.join(__dirname, '..', '..', 'products.json');
 
     try {

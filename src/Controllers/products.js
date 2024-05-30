@@ -1,4 +1,5 @@
 const fs = require("fs");
+const path = require('path');
 
 
 function productSearch(req, res){
@@ -68,10 +69,28 @@ function getDetail(req, res){
 }
 
 function getListProducts(){
+    // Obtén la ruta absoluta al archivo products.json
+    const filePath = path.join(__dirname, 'products.json');
+
+    try {
+        // Verifica si el archivo existe antes de intentar leerlo
+        if (!fs.existsSync(filePath)) {
+            throw new Error(`File not found: ${filePath}`);
+        }
+
+        // Lee el archivo y parsea su contenido
+        const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+        return data.products;
+    } catch (error) {
+        console.error('Error reading products.json:', error);
+        throw error;
+    }
+
+
     //const data = JSON.parse(fs.readFileSync('C:\\Descargas\\Programacion\\Programacion\\BazarUniversal\\api\\src\\Json\\products.json'));
-    const data = JSON.parse(fs.readFileSync('products.json'));
+    //const data = JSON.parse(fs.readFileSync('products.json'));
         
-    return data.products; 
+    //return data.products; 
 }
 
 module.exports = {

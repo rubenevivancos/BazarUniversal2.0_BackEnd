@@ -1,6 +1,6 @@
 const server = require('./src/app.js');
 
-const port = process.env.PORT; //Esto es importantisimo, ya que Railway usa la variable PORT
+const port = process.env.PORT || 3001; //Esto es importantisimo, ya que Vercel usa la variable PORT 
 
 
 server.listen(port, () => {

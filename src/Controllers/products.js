@@ -69,8 +69,9 @@ function getDetail(req, res){
 }
 
 function getListProducts(){
-    // Obtén la ruta absoluta al archivo products.json
-    const filePath = path.join(__dirname, 'products.json');
+    // Ajusta la ruta para apuntar a 'products.json' que está al mismo nivel que 'src'
+    //Esto es necesario para Vercel
+    const filePath = path.join(__dirname, '..', '..', 'products.json');
 
     try {
         // Verifica si el archivo existe antes de intentar leerlo
